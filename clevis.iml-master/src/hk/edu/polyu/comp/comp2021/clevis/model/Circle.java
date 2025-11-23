@@ -1,4 +1,6 @@
     package hk.edu.polyu.comp.comp2021.clevis.model;
+    import java.awt.Graphics2D;
+
     /**
      * Represents a circular shape defined by a center point and radius.
      * Implements circular geometry with precise point coverage detection
@@ -52,5 +54,9 @@
         @Override
         public String list(){
             return String.format("Name = %s\tCenter = (%f,%f)\tRadius = %f", getName(),x,y,radius);
+        }
+
+        public void draw(Graphics2D g2) {
+            g2.draw(new java.awt.geom.Ellipse2D.Double(x - radius, y - radius, radius * 2, radius * 2));
         }
     }

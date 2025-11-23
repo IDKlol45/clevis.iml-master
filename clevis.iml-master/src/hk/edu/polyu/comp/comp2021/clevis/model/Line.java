@@ -1,5 +1,5 @@
 package hk.edu.polyu.comp.comp2021.clevis.model;
-
+import java.awt.Graphics2D;
 /**
  * Represents a linear segment between two points in 2D space.
  * Implements line segment geometry including precise point distance calculations
@@ -72,5 +72,8 @@ public class Line extends Shape{
     @Override
     public String list(){
         return String.format("Name = %s\tStarting Point = (%f,%f)\tEnd Point = (%f,%f)", getName(),x1,y1,x2,y2);
+    }
+    public void draw(Graphics2D g2) {
+        g2.draw(new java.awt.geom.Line2D.Double(x1, y1, x2, y2));
     }
 }

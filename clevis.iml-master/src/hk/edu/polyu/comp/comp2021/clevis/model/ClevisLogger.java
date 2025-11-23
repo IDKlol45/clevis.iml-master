@@ -50,9 +50,11 @@ public class ClevisLogger {
         txtLog.write(cmd);
         txtLog.newLine();
 
-        htmlLog.write(STR."""
-<tr><td>\{index++}</td><td>\{escape(cmd)}</td></tr>
-""");
+        htmlLog.write(String.format(
+                "<tr><td>%d</td><td>%s</td></tr>\n",
+                index++,
+                escape(cmd)
+        ));
     }
 
     /**

@@ -1,6 +1,8 @@
 package hk.edu.polyu.comp.comp2021.clevis.model;
 
 import java.util.ArrayList;
+import java.awt.Graphics2D;
+import java.util.Comparator;
 
 /**
  * Represents a composite shape that contains multiple shapes as a single logical entity.
@@ -109,5 +111,13 @@ public class ShapeGroup extends Shape{
             }
         }
         return res.toString();
+    }
+
+    public void draw(Graphics2D g2) {
+        ArrayList<Shape> sorted = new ArrayList<>(shapes);
+        sorted.sort(Comparator.comparingInt(Shape::getZ)); // draw lower z first
+        for (Shape s : sorted) {
+            s.draw(g2);
+        }
     }
 }

@@ -1,6 +1,8 @@
 package hk.edu.polyu.comp.comp2021.clevis;
 
 import hk.edu.polyu.comp.comp2021.clevis.model.Clevis;
+import hk.edu.polyu.comp.comp2021.clevis.model.ClevisGUI;  // ⭐ Add this import
+import javax.swing.SwingUtilities;                         // ⭐ Add this import
 
 import java.io.File;
 import java.io.IOException;
@@ -14,14 +16,21 @@ public class Application {
         Map<String, String> params = parseArgs(args);
 
         if (!params.containsKey("-html") || !params.containsKey("-txt")) {
-            System.out.println("Usage: java ... Application -html <htmlPath> -txt <txtPath>");
+            System.out.println("Usage: java ... Application -html <htmlPath> -txt <txtPath> [-gui]");
             return;
         }
 
         String htmlPath = resolveFilePath(params.get("-html"));
-        String txtPath  = resolveFilePath(params.get("-txt"));
+        String txtPath = resolveFilePath(params.get("-txt"));
 
-        Clevis clevis = new Clevis(htmlPath, txtPath);
+        // ⭐ Extend (GUI option)
+        if (params.containsKey("-gui")) {
+            SwingUtilities.invokeLater(() -> new ClevisGUI(txtPath, htmlPath));
+            return;
+        }
+
+        // 🔹 Original CLI mode remains untouched
+        Clevis clevis = new Clevis(txtPath, htmlPath);
         clevis.run();
     }
 
@@ -42,7 +51,6 @@ public class Application {
             return f.getAbsolutePath();
         }
 
-        // If file does not exist, create it in current directory
         String fileName = f.getName();
         File newFile = new File(System.getProperty("user.dir"), fileName);
 

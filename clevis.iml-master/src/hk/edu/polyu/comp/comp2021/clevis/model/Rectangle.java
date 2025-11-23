@@ -1,4 +1,5 @@
 package hk.edu.polyu.comp.comp2021.clevis.model;
+import java.awt.Graphics2D;
 
 /**
  * Represents a rectangular shape defined by top-left corner coordinates,
@@ -63,5 +64,9 @@ public class Rectangle extends Shape {
     @Override
     public String list(){
         return String.format("Name = %s\tTop-Left Corner = (%f,%f)\tWidth = %f\tHeight = %f", getName(),x,y,width,height);
+    }
+
+    public void draw(Graphics2D g2) {
+        g2.draw(new java.awt.geom.Rectangle2D.Double(x, y, width, height));
     }
 }

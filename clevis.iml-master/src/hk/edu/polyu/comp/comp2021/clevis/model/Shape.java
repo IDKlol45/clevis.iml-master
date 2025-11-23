@@ -1,6 +1,7 @@
 package hk.edu.polyu.comp.comp2021.clevis.model;
 
 import java.awt.*;
+import java.awt.Graphics2D;
 
 /**
  * Abstract base class representing a geometric shape in the Clevis system.
@@ -142,5 +143,5 @@ public abstract class Shape {
         this.name = name;
     }
 
-    public abstract void draw(Graphics g);
+    public abstract void draw(Graphics2D g);
 }

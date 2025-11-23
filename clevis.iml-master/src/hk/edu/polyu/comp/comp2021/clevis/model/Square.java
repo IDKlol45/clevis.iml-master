@@ -1,4 +1,5 @@
 package hk.edu.polyu.comp.comp2021.clevis.model;
+import java.awt.Graphics2D;
 
 /**
  * Represents a square shape defined by top-left corner coordinates and side length.
@@ -63,5 +64,9 @@ public class Square extends Shape{
     @Override
     public String list(){
         return String.format("Name = %s\tTop-Left Corner = (%f,%f)\tSide Length = %f", getName(),x,y,side);
+    }
+
+    public void draw(Graphics2D g2) {
+        g2.draw(new java.awt.geom.Rectangle2D.Double(x, y, side, side));
     }
 }

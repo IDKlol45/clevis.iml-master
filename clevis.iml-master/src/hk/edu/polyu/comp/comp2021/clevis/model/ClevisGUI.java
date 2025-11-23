@@ -11,6 +11,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -109,7 +110,7 @@ public class ClevisGUI extends JFrame {
                 String cmd = commandField.getText().trim();
                 if (!cmd.isEmpty()) {
                     try {
-                        String result = model.run(cmd);
+                        String result = model.processCommand(cmd);
                         if ("quit".equals(result)) {
                             dispose();
                         } else {

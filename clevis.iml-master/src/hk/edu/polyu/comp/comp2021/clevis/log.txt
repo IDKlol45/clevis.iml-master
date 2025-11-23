@@ -1,0 +1,6 @@
+rectangle 34.2 56 3 3
+Line 23 34 67 12
+Line 23 45 66
+Line
+Line newLine 23 35 67 54
+quit
